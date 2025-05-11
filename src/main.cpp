@@ -154,24 +154,24 @@ void display_call() {
   String number;
   String call_type_acronym;
   if (call.type == CALL_MISSED) {
-    call_type_acronym = "Verpasst";
+    call_type_acronym = "V";
     number = call.caller_phone_number;
   } else if (call.type == CALL_INCOMMING) {
-    call_type_acronym = "Eingehend";
+    call_type_acronym = "E";
     number = call.caller_phone_number;
   } else if (call.type == CALL_OUTGOING) {
-    call_type_acronym = "Ausgehend";
+    call_type_acronym = "A";
     number = call.called_phone_number;
+  } else {
+    call_type_acronym = "?";
   }
 
   display.clearDisplay();
   display.setCursor(0, 14);
   display.setTextColor(WHITE);
-  display.printf("%s %s", call_date, call_time);
+  display.printf("%s %s %s", call_type_acronym, call_date, call_time);
   display.setCursor(0, 35);
   display.println(number);
-  display.setCursor(0, 56);
-  display.println(call_type_acronym);
   display.display();
 }
 
